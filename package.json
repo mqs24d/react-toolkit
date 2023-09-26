@@ -1,0 +1,55 @@
+{
+  "name": "@mqs24d/react-toolkit",
+  "version": "0.0.1-beta",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mqs24d/react-toolkit.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Thomas Pfaff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mqs24d/react-toolkit/issues"
+  },
+  "homepage": "https://github.com/mqs24d/react-toolkit#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build-fast": "tsup src/index.ts --format cjs,esm",
+    "build": "pnpm run build-fast -- --dts-resolve",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm run build",
+    "lint:fix": "eslint src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
+    "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,json}\" ",
+    "lint": "tsc && npm run lint:format && npm run lint:fix "
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "eslint": "^8.50.0",
+    "eslint-config-react-app": "^7.0.1",
+    "prettier": "^3.0.3",
+    "tsup": "^6.6.3",
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.5"
+  }
+}

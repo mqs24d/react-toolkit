@@ -1,4 +1,4 @@
-import type { Options } from 'tsup'
+import type { Options } from 'tsup';
 
 const config: Options = {
   entry: ['src/index.ts'],
@@ -6,6 +6,6 @@ const config: Options = {
   sourcemap: true,
   format: ['cjs', 'esm'],
   clean: true,
-}
+};
 
-export default config
+export default config;

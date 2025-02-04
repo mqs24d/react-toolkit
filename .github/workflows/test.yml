@@ -1,0 +1,33 @@
+name: Test Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Debug
+        run: echo "Test"
+
+  deploy_dev:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: DEV
+    steps:
+      - name: Debug
+        run: echo "DEPLOY DEV"
+
+  deploy_int:
+    needs: deploy_dev
+    runs-on: ubuntu-latest
+    environment: INT
+    steps:
+      - name: Debug
+        run: echo "DEPLOY INT"

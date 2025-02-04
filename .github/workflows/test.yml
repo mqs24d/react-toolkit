@@ -25,6 +25,9 @@ jobs:
         run: echo "DEPLOY DEV"
 
   deploy_int:
+    if: |
+      github.ref == 'refs/heads/main' ||
+      startsWith(github.ref, 'refs/tags/release')
     needs: deploy_dev
     runs-on: ubuntu-latest
     environment: INT
